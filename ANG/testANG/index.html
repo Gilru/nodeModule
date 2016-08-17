@@ -1,0 +1,73 @@
+<!doctype html>
+<html ng-app="myApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <title>ANG</title>
+
+
+</head>
+<body>
+
+<!--<div ng-controller="Counter">-->
+    <!--<h1 ng-Click="count = count + 1">the counter is {{count}}</h1>-->
+<!--</div>-->
+<counter-click></counter-click>
+<ng-view></ng-view>
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+<script src="bin/arraySome.js"></script>
+
+<script>
+    const myApp = angular.module("myApp",["ngRoute"]);
+    myApp.controller("Counter",function ($scope) {
+        $scope.count = 0;
+    })
+
+    myApp.config(function ($routeProvider) {
+        $routeProvider.when("/",{
+            template: "<a href='#/about'>go to about</a>"
+        })
+                .when("/about",{
+                    template: "<a href='#/'>go back home</a>"
+                })
+    })
+
+    myApp.directive("counterClick",function () {
+        return {
+            templateUrl: "myTemplate.html",
+            controller: "Counter"
+        }
+    })
+
+
+//    injector = angular.injector(["myApp"]);
+//    injector.invoke(function ($rootScope, $compile, $document) {
+//        var root = $rootScope.$new();
+//        var element = $compile("<counter-click></counter-click>")(root);
+//
+//
+//        root.$apply();
+
+//       var $h1 = $()
+//        var collec = element[0].getElementsByTagName("h1");
+//        console.log(element[0].getElementsByTagName("h1")[0])
+//        console.dir(element[0])
+//        for (var i = 0 ; i < collec.length;i++) {
+//            console.log(collec[i] + "when i is " + i);
+//        }
+//        console.dir(element[0].getElementsByTagName("h1"));
+
+
+//    })
+
+</script>
+</body>
+</html>
